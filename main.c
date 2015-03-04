@@ -35,7 +35,7 @@ TASK(OSEK_Main_Task) {
 		/*Erkennen Hindernis*/
 
 
-		/* Drive along line if black */
+		/* Drive along line if black 1234*/
 		if(Helligkeit > 500){
 			nxt_motor_set_speed(NXT_PORT_B, 70, 0);
 			nxt_motor_set_speed(NXT_PORT_C, 70, 0);
