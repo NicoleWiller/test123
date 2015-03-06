@@ -1,0 +1,93 @@
+/*
+ * movement.c
+ *
+ *  Created on: 05.03.2015
+ *      Author: Nicole
+ */
+
+#include "../h/main.h"
+
+void rotate() {
+	//Drehung
+	nxt_motor_set_speed(NXT_PORT_B, 60, 0);
+	nxt_motor_set_speed(NXT_PORT_C, -60, 0);
+	return;
+}
+
+void forward() {
+	//Fahren
+	nxt_motor_set_speed(NXT_PORT_B, 70, 0);
+	nxt_motor_set_speed(NXT_PORT_C, 66, 0);
+	return;
+}
+
+void stop() {
+	nxt_motor_set_speed(NXT_PORT_B, 0, 1);
+	nxt_motor_set_speed(NXT_PORT_C, 0, 1);
+	return;
+}
+
+void search() {
+
+	return;
+}
+
+void back() {
+	nxt_motor_set_speed(NXT_PORT_B, -70, 0);
+	nxt_motor_set_speed(NXT_PORT_C, -66, 0);
+	return;
+}
+
+void correction() {
+
+}
+
+void search_line_right() {
+
+	int DrehungL = 0;
+	int DrehungR = 0;
+	int Helligkeit;
+
+
+	nxt_motor_set_count(NXT_PORT_C, 0);
+
+	DrehungL = nxt_motor_get_count(NXT_PORT_B);
+	DrehungR = nxt_motor_get_count(NXT_PORT_C);
+	Helligkeit = ecrobot_get_light_sensor(NXT_PORT_S3);
+
+	while (DrehungL < 180 || Helligkeit < 500) {
+		DrehungL = nxt_motor_get_count(NXT_PORT_B);
+		Helligkeit = ecrobot_get_light_sensor(NXT_PORT_S3);
+		nxt_motor_set_speed(NXT_PORT_B, 70, 0);
+		nxt_motor_set_speed(NXT_PORT_C, -70, 0);
+		break;
+	}
+	stop();
+	return;
+
+}
+
+void search_line_left() {
+
+	int DrehungL = 0;
+	int DrehungR = 0;
+	int Helligkeit;
+
+	nxt_motor_set_count(NXT_PORT_B, 0);
+	nxt_motor_set_count(NXT_PORT_C, 0);
+
+	DrehungL = nxt_motor_get_count(NXT_PORT_B);
+	DrehungR = nxt_motor_get_count(NXT_PORT_C);
+	Helligkeit = ecrobot_get_light_sensor(NXT_PORT_S3);
+
+	while (DrehungR > 180 || Helligkeit < 500) {
+		DrehungR = nxt_motor_get_count(NXT_PORT_C);
+		Helligkeit = ecrobot_get_light_sensor(NXT_PORT_S3);
+		nxt_motor_set_speed(NXT_PORT_B, -70, 0);
+		nxt_motor_set_speed(NXT_PORT_C, 70, 0);
+		break;
+	}
+	stop();
+	return;
+
+}
