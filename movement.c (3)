@@ -1,0 +1,25 @@
+void rotate() {
+ //Drehung
+ nxt_motor_set_speed(NXT_PORT_B, 60, 0);
+ nxt_motor_set_speed(NXT_PORT_C, -60, 0);
+ return;
+}
+
+void forward(){
+ //Fahren
+ nxt_motor_set_speed(NXT_PORT_B, 70, 0);
+ nxt_motor_set_speed(NXT_PORT_C, 69, 0);
+ return;
+ }
+
+void stop(){
+ nxt_motor_set_speed(NXT_PORT_B, 0, 1);
+ nxt_motor_set_speed(NXT_PORT_C, 0, 1);
+ return;
+}
+
+void search(){
+ nxt_motor_set_count(NXT_PORT_B, 90);
+ nxt_motor_set_count(NXT_PORT_C, 90);
+ return;
+}
