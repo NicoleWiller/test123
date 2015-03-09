@@ -1,0 +1,18 @@
+
+ * movement.h
+
+#ifndef H_MOVEMENT_H_
+#define H_MOVEMENT_H_
+
+void rotate();
+void forward();
+void stop();
+void search();
+void back();
+int search_line_right();
+int search_line_left();
+void turn_90_right();
+void turn_90_left();
+void forward_to_line();
+
+#endif /* H_MOVEMENT_H_ */
